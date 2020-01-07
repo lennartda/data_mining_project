@@ -59,6 +59,6 @@ def create_elbowgraph(n, df, type="kmeans", categorical=[0]):
 		    print("Calculated kproto with " + str(i) + " clusters") 
 	
 	plt.plot(range(1,n), clusters,'go--')
-	plt.title("Elbow graph")
+	plt.title("Elbow graph for customer features")
 	plt.xlabel("Number of cluster")
 	plt.ylabel("within-cluster sum-of-squares (inertia)")

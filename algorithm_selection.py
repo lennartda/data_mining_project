@@ -128,7 +128,7 @@ df_cust["k_cluster"] = kmeans_cust_l.predict(df_cust_num_norm)
 cc_cust_num_l = pd.DataFrame(kmeans_cust_l.cluster_centers_, columns = customer_related_num)
 # Create dendogram
 dend = shc.dendrogram(shc.linkage(cc_cust_num_l, method='ward'))
-plt.title("Dendogram")
+plt.title("Dendogram after K-means with k=100")
 # Agglomerative Hierarchical Clustering 
 cc_cust_num_l["h_cluster"] = AgglomerativeClustering(n_clusters=3).fit_predict(cc_cust_num_l)
 # Calculate centroids of clusters and inverse scaling for interpretation

@@ -46,13 +46,15 @@ for i in df[categoricals]:
     fig.update_layout(barmode = "stack")
     fig.write_image("images/profiling/"+i+".png",width=1200, height=500)
 
+
+
 education = pd.crosstab(df["c_cluster"],df["educ"])
 trace1 = go.Bar(x= education.index, y = education.iloc[:,0], name = "Basic") 
 trace2=go.Bar(x= education.index, y = education.iloc[:,1], name = "HS") 
 trace3=go.Bar(x= education.index, y = education.iloc[:,2], name = "BSc/MSc")
 trace4=go.Bar(x= education.index, y = education.iloc[:,3], name = "PhD")
 data = [trace1, trace2, trace3, trace4]
-layout = go.Layout(title = "Cluster and education", xaxis=dict(title="Cluster"), yaxis=dict(title="Frequency"))
+layout = go.Layout(title = "Education - absolut frequency", xaxis=dict(title="Cluster"), yaxis=dict(title="Frequency"))
 fig = go.Figure(data = data, layout = layout)
 fig.update_layout(barmode = "stack")
 
@@ -182,7 +184,7 @@ X = df_profiled[['salary_year', 'mon_value', 'claims_rate', 'premium_total',"pre
 y = df_profiled["c2_cluster"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
 
-clf = DecisionTreeClassifier(max_depth=5)
+clf = DecisionTreeClassifier(max_depth=4)
 # Fit model
 clf = clf.fit(X_train,y_train)
 #Predict the cluster for test data
